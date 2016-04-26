@@ -60,4 +60,22 @@ public class KontrolerGUI {
 	public static void prikaziProzorDodajKurs() {
 		dodajKursProzor.setVisible(true);
 	}
+	public static void izbrisiKurs(int red){
+		try{
+			if(red==-1)
+				JOptionPane.showMessageDialog(frame, "Niste izabrali red !");
+			else{
+			int odgovor=JOptionPane.showConfirmDialog(frame, "Da li ste sigurni?");
+		if(odgovor==JOptionPane.YES_OPTION){
+			frame.kursevi.remove(red);
+			frame.napraviTabelu();
+			JOptionPane.showMessageDialog(frame, "Uspesno!");
+			frame.upisiUTextPolje("Izbrisan je red sa indeksom: "+red);
+		}
+		}
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(frame, "Greska!");
+		}
+		
+	}
 }

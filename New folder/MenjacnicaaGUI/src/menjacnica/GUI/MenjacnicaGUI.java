@@ -210,6 +210,12 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnIzbrisiKurs() {
 		if (btnIzbrisiKurs == null) {
 			btnIzbrisiKurs = new JButton("Izbrisi kurs");
+			btnIzbrisiKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int red=table.getSelectedRow();
+					KontrolerGUI.izbrisiKurs(red);
+				}
+			});
 		}
 		return btnIzbrisiKurs;
 	}
@@ -290,6 +296,11 @@ public class MenjacnicaGUI extends JFrame {
 	private JMenuItem getMntmDodajKurs() {
 		if (mntmDodajKurs == null) {
 			mntmDodajKurs = new JMenuItem("Dodaj kurs");
+			mntmDodajKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					KontrolerGUI.prikaziProzorDodajKurs();
+				}
+			});
 		}
 		return mntmDodajKurs;
 	}
