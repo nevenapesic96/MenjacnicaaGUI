@@ -28,9 +28,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.LinkedList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
+
+import menjacnica.TblModel.TblModel;
+
 import java.awt.ComponentOrientation;
 
 public class MenjacnicaGUI extends JFrame {
@@ -52,12 +56,12 @@ public class MenjacnicaGUI extends JFrame {
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 	private JTextPane textPane;
-	private JTable table;
+	private static JTable table;
 	private JPopupMenu popupMenu;
 	private JMenuItem mntmDodajKurs;
 	private JMenuItem mntmIzbrisiKurs;
 	private JMenuItem mntmIzvrsiZamenu;
-
+	public static LinkedList<Kurs> kursevi=new LinkedList<>();
 	/**
 	 * Launch the application.
 	 */
@@ -86,6 +90,9 @@ public class MenjacnicaGUI extends JFrame {
 		contentPane.add(getCentralniPanel(), BorderLayout.CENTER);
 		contentPane.add(getDesniPanel(), BorderLayout.EAST);
 		contentPane.add(getDonjiPanel(), BorderLayout.SOUTH);
+		
+		TblModel model=new TblModel(kursevi);
+		table.setModel(model);
 	}
 
 	private JMenuBar getMenuBar_1() {
@@ -192,6 +199,11 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnDodajKurs() {
 		if (btnDodajKurs == null) {
 			btnDodajKurs = new JButton("Dodaj kurs");
+			btnDodajKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					KontrolerGUI.prikaziProzorDodajKurs();
+				}
+			});
 		}
 		return btnDodajKurs;
 	}
@@ -296,5 +308,12 @@ public class MenjacnicaGUI extends JFrame {
 	public void upisiUTextPolje(String tekst){
 		if(textPane.getText().equals("")) textPane.setText(tekst);
 		else textPane.setText(textPane.getText()+"\n"+tekst);
+	}
+	public JTable vratiTabelu() {
+		return getTable();
+	}
+	public static void napraviTabelu(){
+		TblModel model=new TblModel(kursevi);
+		table.setModel(model);
 	}
 }

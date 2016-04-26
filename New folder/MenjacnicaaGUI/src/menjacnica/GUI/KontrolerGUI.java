@@ -5,15 +5,19 @@ import java.awt.EventQueue;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import menjacnica.TblModel.TblModel;
+
 public class KontrolerGUI {
 	
 	public static MenjacnicaGUI frame;
+	public static DodajKursGUI dodajKursProzor;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					frame = new MenjacnicaGUI();
+					dodajKursProzor=new DodajKursGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,5 +47,17 @@ public class KontrolerGUI {
 	}
 	public static void podaciOAutoru(){
 		JOptionPane.showMessageDialog(frame, "Autor: Nevena Pešiæ", "Podaci o autoru",JOptionPane.PLAIN_MESSAGE);
+	}
+	public static void dodajKursUTekstPolje(String Sifra,String Naziv,String Prodajni,String Kupovni,String Srednji,String SkraceniNaziv){
+		String kurs="Sifra: "+Sifra+"Prodajni kurs: "+Prodajni+"Kupovni kurs: "+Kupovni+"Srednji kurs: "+Srednji+"Skraceni naziv: "+SkraceniNaziv;
+		frame.upisiUTextPolje(kurs);
+	}
+	public static void dodajKursUTabelu(String Sifra,String Naziv,String Prodajni,String Kupovni,String Srednji,String SkraceniNaziv){
+		Kurs kurs=new Kurs(Sifra, Naziv, Prodajni, Kupovni, Srednji, SkraceniNaziv);
+		MenjacnicaGUI.kursevi.add(kurs);
+		frame.napraviTabelu();
+	}
+	public static void prikaziProzorDodajKurs() {
+		dodajKursProzor.setVisible(true);
 	}
 }
