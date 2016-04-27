@@ -11,6 +11,7 @@ public class KontrolerGUI {
 	
 	public static MenjacnicaGUI frame;
 	public static DodajKursGUI dodajKursProzor;
+	public static IzvrsiZamenuGUI izvrsiZamenu;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -18,6 +19,7 @@ public class KontrolerGUI {
 				try {
 					frame = new MenjacnicaGUI();
 					dodajKursProzor=new DodajKursGUI();
+					izvrsiZamenu=new IzvrsiZamenuGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -77,5 +79,19 @@ public class KontrolerGUI {
 			JOptionPane.showMessageDialog(frame, "Greska!");
 		}
 		
+	}
+	public static void upisiUIznos(int broj){
+		izvrsiZamenu.upisiUTextField(""+broj);
+	}
+	public static void izvrsiZamenuSlajder(int izabranaStavka,String iznos,String transakcija){
+		switch(izabranaStavka){
+		case 0:frame.upisiUTextPolje("EUR, iznos: "+iznos+"vrsta transakcije: "+transakcija);
+		case 1:frame.upisiUTextPolje("USD, iznos: "+iznos+"vrsta transakcije: "+transakcija);
+		case 3:frame.upisiUTextPolje("CHF, iznos: "+iznos+"vrsta transakcije: "+transakcija);
+		}
+		
+	}
+	public static void izvrsiZamenu(){
+		izvrsiZamenu.setVisible(true);
 	}
 }
