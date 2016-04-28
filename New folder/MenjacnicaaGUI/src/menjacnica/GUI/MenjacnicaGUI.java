@@ -78,7 +78,7 @@ public class MenjacnicaGUI extends JFrame {
 		        KontrolerGUI.zatvoriAplikaciju();
 		    }
 		});
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\NEVEN\\Desktop\\New folder\\MenjacnicaaGUI\\materijal\\\u043F\u0440\u0435\u0443\u0437\u0438\u043C\u0430\u045A\u0435.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MenjacnicaGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
 		setTitle("Menjacnica");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

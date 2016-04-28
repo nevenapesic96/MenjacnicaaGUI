@@ -83,12 +83,8 @@ public class KontrolerGUI {
 	public static void upisiUIznos(int broj){
 		izvrsiZamenu.upisiUTextField(""+broj);
 	}
-	public static void izvrsiZamenuSlajder(int izabranaStavka,String iznos,String transakcija){
-		switch(izabranaStavka){
-		case 0:frame.upisiUTextPolje("EUR, iznos: "+iznos+"vrsta transakcije: "+transakcija);
-		case 1:frame.upisiUTextPolje("USD, iznos: "+iznos+"vrsta transakcije: "+transakcija);
-		case 3:frame.upisiUTextPolje("CHF, iznos: "+iznos+"vrsta transakcije: "+transakcija);
-		}
+	public static void izvrsiZamenuSlajder(String izabranaStavka,String iznos,String transakcija){
+		frame.upisiUTextPolje("Izabrana stavka: "+izabranaStavka+", iznos: "+iznos+", vrsta transakcije: "+transakcija);
 		
 	}
 	public static void izvrsiZamenu(){

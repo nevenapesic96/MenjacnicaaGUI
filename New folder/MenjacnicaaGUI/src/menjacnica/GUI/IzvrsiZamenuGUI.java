@@ -8,12 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,7 +28,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JTextField textFieldKupovni;
 	private JTextField Prodajni;
 	private JLabel lblIznos;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	private JLabel lblVrstaTransakcije;
 	private JRadioButton rdbtnKupovina;
 	private JRadioButton rdbtnProdaja;
@@ -34,7 +36,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JButton btnIzvrsiZamenu;
 	private JButton btnOdustani;
 	private JTextField textFieldIznos;
-
+	public ButtonGroup bg;
 	/**
 	 * Launch the application.
 	 */
@@ -64,8 +66,10 @@ public class IzvrsiZamenuGUI extends JFrame {
 		contentPane.add(getBtnIzvrsiZamenu());
 		contentPane.add(getBtnOdustani());
 		contentPane.add(getTextFieldIznos());
+		bg=new ButtonGroup();
+		bg.add(getRdbtnKupovina());
+		bg.add(getRdbtnProdaja());
 	}
-
 	private JLabel getLblKupovniKurs() {
 		if (lblKupovniKurs == null) {
 			lblKupovniKurs = new JLabel("Kupovni kurs");
@@ -105,7 +109,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 		}
 		return lblIznos;
 	}
-	private JComboBox getComboBox() {
+	private JComboBox<String> getComboBox() {
 		if (comboBox == null) {
 			comboBox = new JComboBox();
 			comboBox.setBounds(171, 70, 54, 20);
@@ -127,8 +131,6 @@ public class IzvrsiZamenuGUI extends JFrame {
 		if (rdbtnKupovina == null) {
 			rdbtnKupovina = new JRadioButton("Kupovina");
 			rdbtnKupovina.setBounds(262, 141, 109, 23);
-			if(getRdbtnProdaja().isSelected())
-				getRdbtnKupovina().setEnabled(false);
 		}
 		return rdbtnKupovina;
 	}
@@ -136,8 +138,6 @@ public class IzvrsiZamenuGUI extends JFrame {
 		if (rdbtnProdaja == null) {
 			rdbtnProdaja = new JRadioButton("Prodaja");
 			rdbtnProdaja.setBounds(262, 167, 109, 23);
-			if(getRdbtnKupovina().isSelected())
-				getRdbtnProdaja().setEnabled(false);
 		}
 		return rdbtnProdaja;
 	}
@@ -166,9 +166,9 @@ public class IzvrsiZamenuGUI extends JFrame {
 						JOptionPane.showMessageDialog(null, "Niste izabrali transakciju! ");
 					else{
 						if(getRdbtnKupovina().isSelected())
-					KontrolerGUI.izvrsiZamenuSlajder(comboBox.getSelectedIndex(),getTextFieldIznos().getText(),"Kupovina");
+					KontrolerGUI.izvrsiZamenuSlajder(comboBox.getSelectedItem().toString(),getTextFieldIznos().getText(),"Kupovina");
 						else
-							KontrolerGUI.izvrsiZamenuSlajder(comboBox.getSelectedIndex(),getTextFieldIznos().getText(),"Prodaja");
+							KontrolerGUI.izvrsiZamenuSlajder(comboBox.getSelectedItem().toString(),getTextFieldIznos().getText(),"Prodaja");
 					}
 				}
 			});
