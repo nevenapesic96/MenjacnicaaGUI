@@ -87,7 +87,13 @@ public class KontrolerGUI {
 		frame.upisiUTextPolje("Izabrana stavka: "+izabranaStavka+", iznos: "+iznos+", vrsta transakcije: "+transakcija);
 		
 	}
-	public static void izvrsiZamenu(){
+	public static void izvrsiZamenu(int red){
+		if(red==-1)
+			JOptionPane.showMessageDialog(frame, "Niste izabrali red !");
+		else{
 		izvrsiZamenu.setVisible(true);
+		izvrsiZamenu.upisiUProdajni(frame.kursevi.get(red).getProdajni().toString());
+		izvrsiZamenu.upisiUKupovni(frame.kursevi.get(red).getKupovni().toString());
+		}
 	}
 }

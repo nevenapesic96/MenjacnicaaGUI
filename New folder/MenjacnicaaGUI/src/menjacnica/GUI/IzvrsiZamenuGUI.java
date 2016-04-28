@@ -19,6 +19,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class IzvrsiZamenuGUI extends JFrame {
 
@@ -45,6 +46,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public IzvrsiZamenuGUI() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IzvrsiZamenuGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")));
 		setResizable(false);
 		setTitle("Izvrsi zamenu");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -123,7 +125,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JLabel getLblVrstaTransakcije() {
 		if (lblVrstaTransakcije == null) {
 			lblVrstaTransakcije = new JLabel("Vrsta transakcije");
-			lblVrstaTransakcije.setBounds(262, 120, 85, 14);
+			lblVrstaTransakcije.setBounds(262, 120, 109, 14);
 		}
 		return lblVrstaTransakcije;
 	}
@@ -144,6 +146,9 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JSlider getSlider() {
 		if (slider == null) {
 			slider = new JSlider();
+			slider.setPaintTicks(true);
+			slider.setPaintLabels(true);
+			slider.setMajorTickSpacing(10);
 			slider.setMinorTickSpacing(10);
 			slider.addChangeListener(new ChangeListener() {
 				
@@ -153,7 +158,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 					
 				}
 			});
-			slider.setBounds(25, 197, 375, 26);
+			slider.setBounds(25, 192, 375, 45);
 		}
 		return slider;
 	}
@@ -198,5 +203,11 @@ public class IzvrsiZamenuGUI extends JFrame {
 	}
 	public void upisiUTextField(String tekst){
 		getTextFieldIznos().setText(tekst);
+	}
+	public void upisiUKupovni(String tekst){
+		getTextFieldKupovni().setText(tekst);
+	}
+	public void upisiUProdajni(String tekst){
+		getProdajni().setText(tekst);
 	}
 }

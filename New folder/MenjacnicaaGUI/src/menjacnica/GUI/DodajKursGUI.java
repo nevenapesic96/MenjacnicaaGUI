@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class DodajKursGUI extends JFrame {
 
@@ -38,6 +39,7 @@ public class DodajKursGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public DodajKursGUI() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DodajKursGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")));
 		setTitle("Dodaj kurs");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

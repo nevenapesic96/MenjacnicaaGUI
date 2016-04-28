@@ -224,8 +224,8 @@ public class MenjacnicaGUI extends JFrame {
 			btnIzvrsiZamenu = new JButton("Izvrsi zamenu");
 			btnIzvrsiZamenu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
-					KontrolerGUI.izvrsiZamenu();
+					int red=table.getSelectedRow();
+					KontrolerGUI.izvrsiZamenu(red);
 				}
 			});
 		}
